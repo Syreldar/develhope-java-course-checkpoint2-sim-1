@@ -68,7 +68,7 @@ public class Person
     {
         if (food.isPoisoned())
         {
-            throw new Exception(String.format("You can't eat this %s! It's poisoned!%n", food.getClass().getSimpleName()));
+            throw new Exception(String.format("You can't eat this %s! It's poisoned!", food.getClass().getSimpleName()));
         }
 
         food.onEat(this);
@@ -79,16 +79,24 @@ public class Person
         drink.onDrink(this);
     }
 
-    public void haveLunch(Collection<Eatable> foods, Collection<Drinkable> drinks) throws Exception
+    public void haveLunch(Collection<Eatable> foods, Collection<Drinkable> drinks)
     {
         for (Eatable food : foods)
         {
-            this.eat(food);
+            try {
+                this.eat(food);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
 
         for (Drinkable drink : drinks)
         {
-            this.drink(drink);
+            try {
+                this.drink(drink);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }
