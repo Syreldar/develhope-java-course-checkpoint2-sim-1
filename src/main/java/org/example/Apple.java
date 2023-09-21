@@ -22,11 +22,13 @@ public class Apple implements Eatable {
         return this.quenchHunger;
     }
 
+    @Override
     public boolean isPoisoned()
     {
         return this.isPoisoned;
     }
 
+    @Override
     public void onEat(Person person)
     {
         if (this.isPoisoned)
@@ -34,7 +36,7 @@ public class Apple implements Eatable {
             throw new RuntimeException("You can't eat this! This Apple is poisoned!");
         }
 
-        person.setHunger(person.getHunger() - this.quenchHunger);
+        person.reduceHunger(this.quenchHunger);
         System.out.println("Yum! That Apple was so good!");
     }
 }

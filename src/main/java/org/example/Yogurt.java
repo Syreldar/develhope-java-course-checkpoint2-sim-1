@@ -29,11 +29,13 @@ public class Yogurt implements Eatable, Drinkable {
         return this.quenchThirst;
     }
 
+    @Override
     public boolean isPoisoned()
     {
         return this.isPoisoned;
     }
 
+    @Override
     public void onEat(Person person)
     {
         if (this.isPoisoned)
@@ -41,13 +43,14 @@ public class Yogurt implements Eatable, Drinkable {
             throw new RuntimeException("You can't eat this! This Yogurt is poisoned!");
         }
 
-        person.setHunger(person.getHunger() - this.quenchHunger);
+        person.reduceHunger(this.quenchHunger);
         System.out.println("Yum! That Yogurt was so tasty!");
     }
 
+    @Override
     public void onDrink(Person person)
     {
-        person.setThirst(person.getThirst() - this.quenchThirst);
+        person.reduceThirst(this.quenchThirst);
         System.out.println("Wow! That Yogurt was so refreshing!");
     }
 }

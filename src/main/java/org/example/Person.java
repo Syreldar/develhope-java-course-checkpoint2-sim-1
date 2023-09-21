@@ -8,6 +8,8 @@ public class Person
     private int hunger;
     private int thirst;
 
+    public Person() {}
+
     public Person(String name)
     {
         this.name = name;
@@ -24,7 +26,7 @@ public class Person
 
     public String getName()
     {
-        return name;
+        return this.name;
     }
 
     public void setName(String name)
@@ -34,7 +36,7 @@ public class Person
 
     public int getHunger()
     {
-        return hunger;
+        return this.hunger;
     }
 
     public void setHunger(int hunger)
@@ -44,12 +46,22 @@ public class Person
 
     public int getThirst()
     {
-        return thirst;
+        return this.thirst;
     }
 
     public void setThirst(int thirst)
     {
         this.thirst = thirst;
+    }
+
+    public void reduceHunger(int value)
+    {
+        this.hunger -= value;
+    }
+
+    public void reduceThirst(int value)
+    {
+        this.thirst -= value;
     }
 
     public void eat(Eatable food) throws Exception
@@ -71,12 +83,12 @@ public class Person
     {
         for (Eatable food : foods)
         {
-            eat(food);
+            this.eat(food);
         }
 
         for (Drinkable drink : drinks)
         {
-            drink(drink);
+            this.drink(drink);
         }
     }
 }

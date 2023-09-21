@@ -12,12 +12,13 @@ public class Cola implements Drinkable {
 
     public int getQuenchThirst()
     {
-        return quenchThirst;
+        return this.quenchThirst;
     }
 
+    @Override
     public void onDrink(Person person)
     {
-        person.setThirst(person.getThirst() - this.quenchThirst);
+        person.reduceThirst(this.quenchThirst);
         System.out.println("Ahh! That Cola was so refreshing!");
     }
 }
